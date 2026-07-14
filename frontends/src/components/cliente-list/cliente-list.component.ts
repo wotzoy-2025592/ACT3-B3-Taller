@@ -33,12 +33,16 @@ export class ClienteListComponent implements OnInit {
   }
 
   cargarClientes(): void {
+      console.log("Solicitando clientes...");
+
     this.cargando = true;
     this.mensajeError = '';
 
     try {
       this.clienteService.obtenerClientes().subscribe({
         next: (respuesta) => {
+                console.log("Respuesta del backend:", respuesta);
+
           this.clientes = respuesta.clientes;
           this.cargando = false;
         },
