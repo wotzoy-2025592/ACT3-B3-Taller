@@ -1,0 +1,55 @@
+<div class="contenedor-listado">
+    
+    <h2>Listado de Clientes</h2>
+
+    <p class="mensaje cargando" *ngIf="cargando">
+        Cargando clientes...
+    </p>
+
+    <p class="mensaje error" *ngIf="mensajeError">
+        {{ mensajeError }}
+    </p>
+
+    <table *ngIf="clientes.length > 0">
+
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let cliente of clientes">
+
+                <td>{{ cliente.codigoCliente }}</td>
+                <td>{{ cliente.nombreCliente }}</td>
+                <td>{{ cliente.direccionCliente }}</td>
+                <td>{{ cliente.telefonoCliente }}</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <p class="mensaje" *ngIf="!cargando && clientes.length === 0">
+        No existen clientes registrados.
+    </p>
+
+    <div class="botones">
+
+        <button
+            type="button"
+            (click)="regresarMenu()">
+
+            Regresar al Menú
+
+        </button>
+
+    </div>
+
+</div>

@@ -1,0 +1,71 @@
+<div class="contenedor-formulario">
+
+    <h2>Agregar Cliente</h2>
+
+    <form [formGroup]="formulario" (ngSubmit)="agregar()">
+
+        <div class="campo">
+            <label for="codigoCliente">Código del Cliente</label>
+            <input
+                id="codigoCliente"
+                type="text"
+                formControlName="codigoCliente"
+                placeholder="Ingrese el código del cliente">
+        </div>
+
+        <div class="campo">
+            <label for="nombreCliente">Nombre del Cliente</label>
+            <input
+                id="nombreCliente"
+                type="text"
+                formControlName="nombreCliente"
+                placeholder="Ingrese el nombre del cliente">
+        </div>
+
+        <div class="campo">
+            <label for="direccionCliente">Dirección</label>
+            <input
+                id="direccionCliente"
+                type="text"
+                formControlName="direccionCliente"
+                placeholder="Ingrese la dirección">
+        </div>
+
+        <div class="campo">
+            <label for="telefonoCliente">Teléfono</label>
+            <input
+                id="telefonoCliente"
+                type="text"
+                formControlName="telefonoCliente"
+                placeholder="Ingrese el teléfono">
+        </div>
+
+        <div class="botones">
+
+            <button type="submit" [disabled]="enviando">
+                Guardar Cliente
+            </button>
+
+            <button
+                type="button"
+                (click)="regresarMenu()">
+
+                Regresar al Menú
+
+            </button>
+
+        </div>
+
+    </form>
+
+    <div class="mensaje-error" *ngIf="mensajeError">
+        {{ mensajeError }}
+    </div>
+
+    <ul *ngIf="erroresServidor.length">
+        <li *ngFor="let error of erroresServidor">
+            {{ error }}
+        </li>
+    </ul>
+
+</div>
